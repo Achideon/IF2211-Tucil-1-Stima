@@ -3,36 +3,54 @@ import java.io.IOException;
 import java.util.*;
 import java.time.*;
 
-import stima.io_file.*;
-import stima.board_utils.*;
-import stima.Tile;
-import stima.Region;
+import stima.backend.*;
 
 public class App {
     public static void main(String[] args) throws IOException{
         String path = "data/";
-        Scanner filename = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         System.out.print("Masukkan nama file: ");
-        char[][] board = io_file.readFile(path.concat(filename.nextLine()));
+        char[][] board = io_file.readFileFromPath(path.concat(input.nextLine()));
         if(!board_utils.isBoardValid(board)){
-            throw new IllegalArgumentException("board invalid");
+            input.close();
+            System.out.println("Papan invalid! Keluar dari program...");
+            return;
         }
         int n = board.length;
         Region[] regions = new Region[n];
         regions = Region.getRegions(board);
+
+        System.out.println("========================= Metode Penyelesaian =========================");
+        System.out.println("1. Brute force murni (tidak direkomendasikan untuk board 8 x 8 ke atas)");
+        System.out.println("2. Brute force berdasarkan warna pada papan");
+        System.out.print("Pilih metode penyelesaian (1/2): ");
+        int method = input.nextInt();
+        input.nextLine();
         Tile[] queens = new Tile[n];
-        int totalstep = board_solver.howManySteps(regions);
-        // shoutout kepada https://stackoverflow.com/questions/4927856/how-can-i-calculate-a-time-difference-in-java untuk perhitungan waktu
         Instant brutestart = Instant.now();
-        queens = board_solver.getQueenTiles(0, regions, queens, board, totalstep);
+        if(method == 1){
+            board_solver.totalstep = board_solver.howManySteps(board.length);
+            queens = board_solver.bruteMethod(0, board, queens, -1, false, null);
+        }
+        else if(method == 2){
+            board_solver.totalstep = board_solver.howManySteps2(regions);
+            queens = board_solver.regionMethod(0, regions, queens, board, false, null);
+        } 
+        else{
+            input.close();
+            throw new IllegalArgumentException("method invalid");
+        }
         Instant bruteend = Instant.now();
+
         if(queens != null){
             System.out.println();
             io_file.printBoard(queens, board);
-            System.out.println();
             System.out.println("Waktu pencarian: " + Duration.between(brutestart, bruteend).toMillis() + " ms");
-            System.out.println("Jumlah kasus yang ditinjau: " + board_solver.steps);
+            System.out.println("Jumlah kasus yang ditinjau: " + board_solver.steps + " / " + board_solver.totalstep);
+            System.out.print("Apakah anda ingin menyimpan solusi? (Y/N): ");
+            String savefile = input.nextLine();
+            if(savefile.equalsIgnoreCase("y")) io_file.writeFile(queens, board, null);
         } else System.out.println("Tidak ditemukan solusi");
-        filename.close();
+        input.close();
     }
 }

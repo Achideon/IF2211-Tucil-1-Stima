@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stima.GUI.controller.BoardController">
+   <children>
+      <BorderPane prefHeight="405.0" prefWidth="305.0">
+         <bottom>
+            <VBox alignment="CENTER" prefHeight="127.0" prefWidth="327.0" spacing="10.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="noInputWarn" alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="342.0" style="-fx-font-size: 15px; -fx-font-family: 'Tw Cen MT'; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 20, 0, 0, 0);" text="NO INPUT DETECTED!" textFill="RED" wrapText="true" managed="false" visible="false" />
+                  <Button fx:id="btnSolve" mnemonicParsing="false" onAction="#solveButton" prefHeight="43.0" prefWidth="241.0" styleClass="menu-btn" stylesheets="@../css/button.css" text="SOLVE" textFill="#a2ffcd" textOverrun="CLIP" wrapText="true" />
+                  <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backButton" prefHeight="43.0" prefWidth="241.0" styleClass="menu-btn" stylesheets="@../css/button.css" text="BACK" textFill="#a2ffcd" textOverrun="CLIP" wrapText="true" />
+               </children>
+            </VBox>
+         </bottom>
+         <top>
+            <VBox alignment="CENTER" prefHeight="89.0" prefWidth="352.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="342.0" style="-fx-font-size: 30px; -fx-font-family: 'TW Cen MT Bold'; -fx-font-weight: bold;" text="Queen Game Solver" textFill="WHITE" wrapText="true">
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="352.0" text="A minimal application to solve Linkedin's Queens game" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnFile" mnemonicParsing="false" onAction="#fileButton" prefHeight="30.0" prefWidth="150.0" styleClass="smaller-btn" stylesheets="@../css/button.css" text="Choose File..." textFill="#a2ffcd" textOverrun="CLIP" wrapText="true" />
+                        <Label fx:id="fileLabel" style="-fx-font-size: 15; -fx-font-family: 'Tw Cen MT Bold';" text="No file chosen" textFill="#a2ffcd" />
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="inputBoard" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" style="-fx-font-size: 12; -fx-font-family: 'Courier New';" />
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

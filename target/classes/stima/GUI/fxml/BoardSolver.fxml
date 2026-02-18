@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stima.GUI.controller.SolverController">
+   <children>
+      <BorderPane prefHeight="405.0" prefWidth="305.0">
+         <bottom>
+            <VBox alignment="CENTER" spacing="10.0" minHeight="200" prefHeight="200.0" prefWidth="327.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox fx:id="infoBox" alignment="CENTER" minHeight="30.0" prefHeight="30.0" prefWidth="200.0" spacing="10.0" managed="false" visible="false">
+                     <children>
+                        <Label fx:id="timeLabel" style="-fx-font-size: 15; -fx-font-family: 'Tw Cen MT Bold';" textFill="#a2ffcd" />
+                        <Label fx:id="stepLabel" style="-fx-font-size: 15; -fx-font-family: 'Tw Cen MT Bold';" textFill="#a2ffcd" />
+                     </children>
+                  </HBox>
+                  <ProgressBar fx:id="progBar" prefWidth="500" prefHeight="25" progress="0.0"/>
+                  <Label fx:id="noSolution" managed="false" visible="false" style="-fx-font-size: 20px; -fx-font-family: 'Tw Cen MT Bold';" text="SOLUTION NOT FOUND!" textFill="#a2ffcd" />
+                  <Button fx:id="btnSave" managed="false" visible="false" mnemonicParsing="false" onAction="#saveButton" prefHeight="43.0" prefWidth="241.0" styleClass="menu-btn" stylesheets="@../css/button.css" text="SAVE SOLUTION" textFill="#a2ffcd" textOverrun="CLIP" wrapText="true" />
+                  <Button fx:id="btnBack" mnemonicParsing="false" onAction="#backButton" prefHeight="43.0" prefWidth="241.0" styleClass="menu-btn" stylesheets="@../css/button.css" text="BACK" textFill="#a2ffcd" textOverrun="CLIP" wrapText="true" />
+               </children>
+            </VBox>
+         </bottom>
+         <top>
+            <VBox alignment="CENTER" prefHeight="89.0" prefWidth="352.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" prefHeight="96.0" prefWidth="342.0" style="-fx-font-size: 30px; -fx-font-family: 'TW Cen MT Bold'; -fx-font-weight: bold;" text="Queen Game Solver" textFill="WHITE" wrapText="true">
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="BOTTOM" graphicTextGap="0.0" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="352.0" text="A minimal application to solve Linkedin's Queens game" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <StackPane>
+               <GridPane fx:id="boardGrid" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+                  <padding>
+                     <Insets bottom="15" top="15" />
+                  </padding>
+                  <columnConstraints>
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+               </GridPane>
+            </StackPane>
+         </center>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -1,0 +1,5 @@
+AABB#
+AC#BB
+#CDBB
+CCE#B
+C#CCC
