@@ -12,6 +12,7 @@
   <url>http://www.example.com</url>
 
   <properties>
+    <main.class>stima.App2</main.class>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -74,8 +75,40 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
-          <release>17</release>
-          <mainClass>stima.App</mainClass>
+          <release>25</release>
+        </configuration>
+      </plugin>
+      <plugin>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-maven-plugin</artifactId>
+      <version>0.0.8</version>
+      <configuration>
+        <mainClass>stima.App2</mainClass>
+        <launcher>app</launcher>
+        <jlinkZipName>app</jlinkZipName>
+        <jlinkImageName>app</jlinkImageName>
+        <noHeaderFiles>true</noHeaderFiles>
+        <noManPages>true</noManPages>
+      </configuration>
+    </plugin>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.8</version>
+        <configuration>
+          <mainClass>stima.App2</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>${main.class}</mainClass>
+                </manifest>
+            </archive>
         </configuration>
       </plugin>
     </plugins>
