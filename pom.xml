@@ -39,9 +39,35 @@
       <artifactId>junit-jupiter-params</artifactId>
       <scope>test</scope>
     </dependency>
+    <!-- Source: https://mvnrepository.com/artifact/org.openjfx/javafx-controls -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>25</version>
+        <scope>compile</scope>
+    </dependency>
+    <!-- Source: https://mvnrepository.com/artifact/org.openjfx/javafx-fxml -->
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>25</version>
+        <scope>compile</scope>
+    </dependency>
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+          <directory>src/main/java</directory>
+          <includes>
+              <include>**/*.fxml</include>
+              <include>**/*.ttf</include>
+              <include>**/*.png</include>
+              <include>**/*.gif</include>
+              <include>**/*.css</include>
+          </includes>
+      </resource>
+  </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

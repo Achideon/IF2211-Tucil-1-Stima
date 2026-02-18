@@ -1,6 +1,5 @@
-package stima;
+package stima.backend;
 import java.util.*;
-import stima.Tile;
 
 public class Region {
     public char name;
@@ -23,26 +22,24 @@ public class Region {
         return true;
     }
 
-    public static boolean isTileValid(Tile loc, char[][] board){
-        // cek apakah tile benar berdasarkan region (punya neighboring tile, gak terpisah)
-        int r = loc.row;
-        int c = loc.col;
-        char val = board[r][c];
-        if(c > 0 && val == board[r][c-1]) return true;
-        if(c < board[r].length - 1 && val == board[r][c+1]) return true;
-        if(r > 0 && val == board[r-1][c]) return true;
-        if(r < board.length - 1 && val == board[r+1][c]) return true;
-        return false;
-    }
+    // public static boolean isTileValid(Tile loc, char[][] board){
+    //     // cek apakah tile benar berdasarkan region (punya neighboring tile, gak terpisah)
+    //     int r = loc.row;
+    //     int c = loc.col;
+    //     char val = board[r][c];
+    //     if(c > 0 && val == board[r][c-1]) return true;
+    //     if(c < board[r].length - 1 && val == board[r][c+1]) return true;
+    //     if(r > 0 && val == board[r-1][c]) return true;
+    //     if(r < board.length - 1 && val == board[r+1][c]) return true;
+    //     return false;
+    // }
 
     public static void updateRegion(Tile loc, char[][] board, Region[] regions){
         int i = 0;
         int j = 0;
         char name = board[loc.row][loc.col];
-        if(!updateRegionList(name, regions)){
-            if(!isTileValid(loc, board)) throw new IllegalArgumentException("Region terpisah");
-        } 
-        while(regions[i].name != name) i++;
+        updateRegionList(name, regions);
+        while(i < regions.length && regions[i].name != name) i++;
         if (i == regions.length || regions[i] == null) throw new IllegalArgumentException("Region terlalu banyak"); // region penuh, gak bisa update
         while(regions[i].loc[j] != null) j++;
         if (j < regions[i].loc.length){ 
@@ -58,7 +55,7 @@ public class Region {
         while(i < board.length){
             int j = 0;
             while(j < board[i].length){
-                Tile loc = new Tile(i, j);
+                Tile loc = new Tile(i, j, board[i][j]);
                 updateRegion(loc, board, regions);
                 j++;
             }

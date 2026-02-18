@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox style="-fx-background-color: #333333;" spacing="15" alignment="CENTER"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="stima.GUI.controller.SelectMethodController">
+
+    <Label text="Choose Solver Method" textFill="#ffffff" style="-fx-font-family: 'TW Cen MT Bold'; -fx-font-size: 40px"/>
+
+    <Button mnemonicParsing="false" onAction="#chooseBrute" prefHeight="43.0" prefWidth="241.0" styleClass="menu-btn" stylesheets="@../css/button.css" text="Pure Brute Force" textFill="#a2ffcd" textOverrun="CLIP" wrapText="true"/>
+
+    <Button mnemonicParsing="false" onAction="#chooseRegion" prefHeight="43.0" prefWidth="241.0" styleClass="menu-btn" stylesheets="@../css/button.css" text="Region Method" textFill="#a2ffcd" textOverrun="CLIP" wrapText="true"/>
+
+</VBox>
